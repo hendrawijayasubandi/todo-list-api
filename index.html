@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentasi API To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .endpoint {
+            background: #eef;
+            padding: 10px;
+            border-left: 5px solid #007BFF;
+            margin-bottom: 10px;
+        }
+        .method {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .json-output {
+            background: #222;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dokumentasi API To-Do List</h1>
+        <p>API ini digunakan untuk mengelola daftar tugas dengan fitur autentikasi.</p>
+        
+        <h2>🔑 Autentikasi</h2>
+        <div class="endpoint">
+            <p><span class="method">POST</span> /api/auth/register</p>
+            <p>Registrasi pengguna baru.</p>
+            <pre class="json-output">
+{
+    "message": "User berhasil didaftarkan"
+}
+            </pre>
+        </div>
+        <div class="endpoint">
+            <p><span class="method">POST</span> /api/auth/login</p>
+            <p>Login dan mendapatkan token JWT.</p>
+            <pre class="json-output">
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+            </pre>
+        </div>
+        
+        <h2>📋 Manajemen Checklist</h2>
+        <div class="endpoint">
+            <p><span class="method">POST</span> /api/checklists</p>
+            <p>Membuat checklist baru.</p>
+            <pre class="json-output">
+{
+    "id": "12345",
+    "title": "Belanja",
+    "items": []
+}
+            </pre>
+        </div>
+        <div class="endpoint">
+            <p><span class="method">GET</span> /api/checklists</p>
+            <p>Menampilkan semua checklist.</p>
+            <pre class="json-output">
+[
+    {
+        "id": "12345",
+        "title": "Belanja",
+        "items": []
+    }
+]
+            </pre>
+        </div>
+        <div class="endpoint">
+            <p><span class="method">DELETE</span> /api/checklists/:id</p>
+            <p>Menghapus checklist berdasarkan ID.</p>
+            <pre class="json-output">
+{
+    "message": "Checklist berhasil dihapus"
+}
+            </pre>
+        </div>
+
+        <h2>📌 Manajemen Item dalam Checklist</h2>
+        <div class="endpoint">
+            <p><span class="method">POST</span> /api/checklists/:id/items</p>
+            <p>Menambahkan item dalam checklist.</p>
+            <pre class="json-output">
+{
+    "id": "67890",
+    "name": "Beli susu",
+    "status": "pending"
+}
+            </pre>
+        </div>
+        <div class="endpoint">
+            <p><span class="method">PATCH</span> /api/checklists/:checklistId/items/:itemId/status</p>
+            <p>Menandai item sebagai selesai.</p>
+            <pre class="json-output">
+{
+    "message": "Status item diperbarui"
+}
+            </pre>
+        </div>
+    </div>
+</body>
+</html>
